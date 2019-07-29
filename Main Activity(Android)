@@ -1,0 +1,98 @@
+package com.info.xxx.aaaa.ta_kat_makas;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+    private ImageView tas;
+    private ImageView kagıt;
+    private ImageView makas;
+    private ImageView bos1;
+    private ImageView bos2;
+    private TextView sonuc;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tas=findViewById(R.id.tas);
+        kagıt=findViewById(R.id.kagıt);
+        makas=findViewById(R.id.makas);
+        bos1=findViewById(R.id.bos1);
+        bos2=findViewById(R.id.bos2);
+        sonuc=findViewById(R.id.sonuc);
+
+
+        tas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random r=new Random();
+                int rastgele = r.nextInt(3);
+
+                if(rastgele==0){
+                    sonuc.setText("Same, one more!");
+                    bos1.setImageResource(R.drawable.tas);
+                    bos2.setImageResource(R.drawable.tas);
+                }else if(rastgele==1){
+                    sonuc.setText("You win!");
+                    bos1.setImageResource(R.drawable.tas);
+                    bos2.setImageResource(R.drawable.makas);
+                }else{
+                    sonuc.setText("You lost!");
+                    bos1.setImageResource(R.drawable.tas);
+                    bos2.setImageResource(R.drawable.kagit);
+                }
+
+
+
+            }
+        });
+        kagıt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random r=new Random();
+                int rastgele = r.nextInt(3);
+
+                if(rastgele==0){
+                    sonuc.setText("You win!");
+                    bos1.setImageResource(R.drawable.kagit);
+                    bos2.setImageResource(R.drawable.tas);
+                }else if(rastgele==1){
+                    sonuc.setText("You lost");
+                    bos1.setImageResource(R.drawable.kagit);
+                    bos2.setImageResource(R.drawable.makas);
+                }else{
+                    sonuc.setText("Same, one more!");
+                    bos1.setImageResource(R.drawable.kagit);
+                    bos2.setImageResource(R.drawable.kagit);
+                }
+            }
+        });
+        makas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random r=new Random();
+                int rastgele = r.nextInt(3);
+
+                if(rastgele==0){
+                    sonuc.setText("You lost!");
+                    bos1.setImageResource(R.drawable.makas);
+                    bos2.setImageResource(R.drawable.tas);
+                }else if(rastgele==1){
+                    sonuc.setText("Same, one more!");
+                    bos1.setImageResource(R.drawable.makas);
+                    bos2.setImageResource(R.drawable.makas);
+                }else{
+                    sonuc.setText("You win!");
+                    bos1.setImageResource(R.drawable.makas);
+                    bos2.setImageResource(R.drawable.kagit);
+                }
+            }
+        });
+    }
+}
